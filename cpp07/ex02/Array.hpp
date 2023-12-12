@@ -1,6 +1,7 @@
 #ifndef ARR
 #define ARR
 
+#include <iostream>
 #include <cstdlib>
 #include <stdexcept>
 
@@ -33,9 +34,8 @@ Array<T>::Array(unsigned int n) {
 
 template <typename T>
 Array<T>::Array(Array const &copy) {
-    delete[] this->arr;
     this->arr = new T[copy.size_arr];
-    for (unsigned int i = 0; i < size_arr; i++)
+    for (unsigned int i = 0; i < copy.size_arr; i++)
         arr[i] = copy.arr[i];
     this->size_arr = copy.size_arr;
 }
@@ -43,9 +43,10 @@ Array<T>::Array(Array const &copy) {
 template <typename T>
 Array<T> &Array<T>::operator=(Array const & assign) {
     if (this != &assign) {
-        delete[] this->arr;
+        if (this->arr)
+            delete[] this->arr;
         this->arr = new T[assign.size_arr];
-        for (unsigned int i = 0; i < size_arr; i++)
+        for (unsigned int i = 0; i < assign.size_arr; i++)
             arr[i] = assign.arr[i];
         this->size_arr = assign.size_arr;
     }
