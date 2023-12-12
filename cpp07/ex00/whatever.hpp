@@ -1,34 +1,28 @@
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#ifndef WHA
+#define WHA
+#include <iostream>
 
 template <typename T>
-void swap(T& parameter1, T& parameter2)
-{
-	T temp;
+void    swap(T& a, T& b) {
+    T   tmp;
 
-	temp = parameter1;
-	parameter1 = parameter2;
-	parameter2 = temp;
+    tmp = a;
+    a = b;
+    b = tmp;
 }
 
 template <typename T>
-T min(T parameter1, T parameter2)
-{
-	if (parameter1 == parameter2)
-		return (parameter2);
-	if (parameter1 < parameter2)
-		return (parameter1);
-	return (parameter2);
+T    min(T& a, T& b) {
+    if (a < b)
+        return (a);
+    return (b);
 }
 
 template <typename T>
-T max(T parameter1, T parameter2)
-{
-	if (parameter1 == parameter2)
-		return (parameter2);
-	if (parameter1 > parameter2)
-		return (parameter1);
-	return (parameter2);
+T    max(T& a, T& b) {
+    if (a > b)
+        return (a);
+    return (b);
 }
 
 #endif
