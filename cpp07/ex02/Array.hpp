@@ -16,7 +16,7 @@ class Array {
                         Array(Array const &copy);
         Array<T>        &operator=(Array const & assign);
         T               &operator[](unsigned int index);
-        const T               &operator[](unsigned int index) const;
+        const T         &operator[](unsigned int index) const;
         unsigned int    size() const;
                         ~Array();
 };
