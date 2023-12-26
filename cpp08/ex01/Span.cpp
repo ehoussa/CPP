@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+#include <limits>
 
 Span::Span() {
     this->sizevc = 0;
@@ -35,45 +36,14 @@ void Span::addNumber(unsigned int element) {
 }
 
 int Span::shortestSpan() const {
-    int shortes;
-    int tmp;
-    std::vector<int>::const_iterator it;
-    std::vector<int>::const_iterator itt;
-    std::vector<int>::const_iterator it2;
+    std::vector<int> shortest_value;
 
-    for (it = vc.begin(); it != vc.end(); it++) {
-        itt = it;
-        for (it2 = ++itt; it2 != vc.end(); it2++) {
-            tmp = *it2 - *it;
-            if (it == vc.begin())
-                shortes = tmp;
-            else
-                if (shortes > tmp)
-                    shortes = tmp;
-        }
-            
-    }
-    return (shortes);
+    for (size_t i = 1; i < vc.size(); ++i)
+        shortest_value.push_back(vc[i] - vc[i - 1]);
+
+    return (*(std::min_element(shortest_value.begin(), shortest_value.end())));
 }
 
 int Span::longestSpan() const {
-    int longest;
-    int tmp;
-    std::vector<int>::const_iterator it;
-    std::vector<int>::const_iterator itt;
-    std::vector<int>::const_iterator it2;
-
-    for (it = vc.begin(); it != vc.end(); it++) {
-        itt = it;
-        for (it2 = ++itt; it2 != vc.end(); it2++) {
-            tmp = *it2 - *it;
-            if (it == vc.begin())
-                longest = tmp;
-            else
-                if (longest < tmp)
-                    longest = tmp;
-        }
-            
-    }
-    return (longest);
+    return (*(std::max_element(vc.begin(), vc.end())) - *(std::min_element(vc.begin(), vc.end())));
 }
