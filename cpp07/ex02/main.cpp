@@ -41,7 +41,6 @@ int main(void)
 	for (size_t i = 0; i < b.size(); i++) {
 		std::cout << "b[" << i << "] = " << b[i] << "\n";
 	}
-	Array<int>	empty;
     try {
         std::cout << a[a.size() + 1] << std::endl;
     }
